@@ -19,6 +19,46 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
+Employees = {
+  '0013087914': {
+    "name" : "Júlia Z. Schwartz",
+    "position" : "Dev Backend",
+     "last": "Today"
+  },
+  '0003866073': {
+    "name" : "Maria da Silva",
+    "position" : "Data Engineer",
+     "last": "Today"
+  },
+  '0002710499': {
+    "name" : "João Da Silva",
+    "position" : "DevOps",
+    "last": "Yesterday"
+  }
+}
+for tent in range(10):
+
+        try:
+            ser = serial.Serial('/dev/ttyUSB'+tent, 9600, timeout=1)
+
+            ser.reset_input_buffer()
+
+            print("porta"+tent+"encontrada")
+
+        except:
+
+            print('porta não encontrada')
+
+if ser.in_waiting > 0:
+      line = ser.readline().decode('utf-8').rstrip();
+      Employees[line]
+      canvas.itemconfig("number", text=Employees[line])
+      canvas.itemconfig("name", text=Employees[line].name)
+      canvas.itemconfig("position", text=Employees[line].position)
+      canvas.itemconfig("last", text=Employees[line].last)
+
+
+
 window = Tk()
 
 window.geometry("716x490")
@@ -145,7 +185,7 @@ image_6 = canvas.create_image(
     image=image_image_6
 )
 
-canvas.create_text(
+number = canvas.create_text(
     358.0,
     156.0,
     anchor="nw",
@@ -154,7 +194,7 @@ canvas.create_text(
     font=("Inter Medium", 18 * -1)
 )
 
-canvas.create_text(
+name = canvas.create_text(
     356.0,
     199.0,
     anchor="nw",
@@ -181,7 +221,7 @@ canvas.create_text(
     font=("Inter Regular", 9 * -1)
 )
 
-canvas.create_text(
+last = canvas.create_text(
     569.0,
     300.0,
     anchor="nw",
@@ -198,7 +238,7 @@ image_7 = canvas.create_image(
     image=image_image_7
 )
 
-canvas.create_text(
+position= canvas.create_text(
     369.0,
     250.0,
     anchor="nw",
