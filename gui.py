@@ -4,6 +4,7 @@
 
 
 from pathlib import Path
+import serial
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
@@ -36,6 +37,7 @@ Employees = {
     "last": "Yesterday"
   }
 }
+
 for tent in range(10):
 
         try:
@@ -51,7 +53,6 @@ for tent in range(10):
 
 if ser.in_waiting > 0:
       line = ser.readline().decode('utf-8').rstrip();
-      Employees[line]
       canvas.itemconfig("number", text=Employees[line])
       canvas.itemconfig("name", text=Employees[line].name)
       canvas.itemconfig("position", text=Employees[line].position)
