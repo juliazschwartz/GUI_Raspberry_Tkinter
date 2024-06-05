@@ -3,69 +3,34 @@
 # https://github.com/ParthJadhav/Tkinter-Designer
 
 
-from pathlib import Path
+from pathlib import Path 
 import serial
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage,font
-
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"/home/pi/projetos/tela1/assets/frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(r"E:\Downloads\figmas\build\build\assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+def on_escape(event=None):
 
-Employees = {
-  '0013087914': {
-    "name" : "Júlia Z. Schwartz",
-    "position" : "Dev Backend",
-     "last": "Today"
-  },
-  '0003866073': {
-    "name" : "Maria da Silva",
-    "position" : "Data Engineer",
-     "last": "Today"
-  },
-  '0002710499': {
-    "name" : "João Da Silva",
-    "position" : "DevOps",
-    "last": "Yesterday"
-  }
-}
+    print("escaped")
 
-for tent in range(10):
-
-        try:
-            ser = serial.Serial('/dev/ttyUSB'+tent, 9600, timeout=1)
-
-            ser.reset_input_buffer()
-
-            print("porta"+tent+"encontrada")
-
-        except:
-
-            print('porta não encontrada')
-
-if ser.in_waiting > 0:
-      line = ser.readline().decode('utf-8').rstrip();
-      canvas.itemconfig("number", text=Employees[line])
-      canvas.itemconfig("name", text=Employees[line].name)
-      canvas.itemconfig("position", text=Employees[line].position)
-      canvas.itemconfig("last", text=Employees[line].last)
-
-
+    window.destroy()
 
 window = Tk()
 
 window.geometry("716x490")
 window.configure(bg = "#FFFFFF")
 
-Inter = font.Font(family="Inter Regular", size= 13)
+window.bind("<Escape>", on_escape)
+
 
 canvas = Canvas(
     window,
@@ -98,9 +63,9 @@ canvas.create_text(
     298.0,
     29.0,
     anchor="nw",
-    text="Access Control Application",
+    text="Access Control  Application",
     fill="#515156",
-    font= ("Inter ExtraBold", 23 * -1)
+    font=("Inter Bold", 25 * -1)
 )
 
 canvas.create_text(
@@ -109,7 +74,7 @@ canvas.create_text(
     anchor="nw",
     text="Quarta, 01 Maio, 2024, 13:09 ",
     fill="#A2A2A2",
-    font=("Inter ExtraLight", 14 * -1)
+    font=("Inter", 14 * -1)
 )
 
 image_image_1 = PhotoImage(
@@ -126,7 +91,7 @@ canvas.create_text(
     anchor="nw",
     text="Settings",
     fill="#FFFFFF",
-    font=("Inter", 15* -1)
+    font=("Inter", 16 * -1)
 )
 
 image_image_2 = PhotoImage(
@@ -143,7 +108,7 @@ canvas.create_text(
     anchor="nw",
     text="Past Records",
     fill="#FFFFFF",
-    font=("Inter", 15*-1)
+    font=("Inter", 16 * -1)
 )
 
 canvas.create_rectangle(
@@ -181,12 +146,12 @@ image_5 = canvas.create_image(
 image_image_6 = PhotoImage(
     file=relative_to_assets("image_6.png"))
 image_6 = canvas.create_image(
-    491.0,
-    238.0,
+    485.0,
+    239.0,
     image=image_image_6
 )
 
-number = canvas.create_text(
+number =canvas.create_text(
     358.0,
     156.0,
     anchor="nw",
@@ -194,6 +159,7 @@ number = canvas.create_text(
     fill="#646474",
     font=("Inter Medium", 18 * -1)
 )
+print(number)
 
 name = canvas.create_text(
     356.0,
@@ -201,8 +167,10 @@ name = canvas.create_text(
     anchor="nw",
     text="Júlia Z. Schwartz",
     fill="#01150C",
-    font=("Inter ExtraBold", 23 * -1)
+    font=("Inter Bold", 23 * -1)
 )
+
+print(name)
 
 canvas.create_text(
     360.0,
@@ -219,7 +187,7 @@ canvas.create_text(
     anchor="nw",
     text="Employee",
     fill="#646474",
-    font=("Inter Regular", 9 * -1)
+    font=("Inter", 9 * -1)
 )
 
 last = canvas.create_text(
@@ -239,14 +207,80 @@ image_7 = canvas.create_image(
     image=image_image_7
 )
 
-position= canvas.create_text(
+position =canvas.create_text(
     369.0,
-    250.0,
+    246.0,
     anchor="nw",
     text="Dev Backend",
     fill="#212123",
-    font=("Inter Light", 11 * -1)
+    font=("Inter Light", 13 * -1)
 )
+
+print(position);
+
+free = PhotoImage(
+    file=relative_to_assets("free.png"))
+banner = canvas.create_image(
+    514.0,
+    383.0,
+    image=free
+)
+
 window.resizable(True, True),
-window.attributes("-fullscreen", True)
+# window.attributes("-fullscreen", True)
+
+
+Employees = {
+  '0013087914': {
+    "name" : "Júlia Z. Schwartz",
+    "position" : "Dev Backend",
+     "last": "Today"
+  },
+  '0003866073': {
+    "name" : "Maria da Silva",
+    "position" : "Data Engineer",
+     "last": "Today"
+  },
+  '0002710499': {
+    "name" : "João Da Silva",
+    "position" : "DevOps",
+    "last": "Yesterday"
+  }
+}
+
+for tent in range(10):
+
+        try:
+            ser = serial.Serial('/dev/ttyUSB'+tent, 9600, timeout=1)
+
+            ser.reset_input_buffer()
+           
+            print("porta"+tent+"encontrada")
+
+        except:
+            print('porta não encontrada')
+
+# if ser.in_waiting > 0:
+    #   line = ser.readline().decode('utf-8').rstrip();
+try:
+    line = Employees[ser]
+    canvas.itemconfig(number, text=ser)
+    canvas.itemconfig(name, text=line['name'])
+    canvas.itemconfig(position, text=line['position'])
+    canvas.itemconfig(last, text=line['last'])
+    block = PhotoImage(file=relative_to_assets("free.png"))
+    canvas.itemconfig(banner, image=block)
+
+except:
+    canvas.itemconfig(number, text='')
+    canvas.itemconfig(name, text='')
+    canvas.itemconfig(position, text='')
+    canvas.itemconfig(last, text='')
+    block = PhotoImage(
+        file=relative_to_assets("blocked.png"))
+    canvas.itemconfig(banner, image=block)
+
+
 window.mainloop()
+
+
