@@ -265,8 +265,8 @@ try:     #se o funcionário estiver cadastrado ( estiver no dicionário), preenc
     canvas.itemconfig(banner, image=block)
 
 except:   #se o funcionário estiver cadastrado (não estiver no dicionário), preenche os dados do card com uma string vazia e apresenta o banner de "Bloqueado"
-    canvas.itemconfig(number, text='')
-    canvas.itemconfig(name, text='')
+    canvas.itemconfig(number, text=ser)
+    canvas.itemconfig(name, text='Não Cadastrado')
     canvas.itemconfig(position, text='')
     canvas.itemconfig(last, text='')
     block = PhotoImage(
