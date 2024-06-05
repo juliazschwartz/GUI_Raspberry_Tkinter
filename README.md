@@ -1,6 +1,6 @@
 <h1>GUI for Raspberry PI using Python Tkinter Library</h1>
 <div style="display:flex">
-  <img src="https://github.com/juliazschwartz/GUI_Raspberry_Tkinter/blob/main/tela.jpg" width="400"></img>
+  <img src="https://github.com/juliazschwartz/GUI_Raspberry_Tkinter/blob/main/tela.jpg" width="350"></img>
 <img src="https://github.com/juliazschwartz/GUI_Raspberry_Tkinter/blob/main/tela2.jpg" width="350"></img>
 <img src="https://github.com/juliazschwartz/GUI_Raspberry_Tkinter/blob/main/tela3.jpg" width="350"></img>
 </div>
